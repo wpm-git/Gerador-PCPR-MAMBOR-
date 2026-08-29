@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Geradores PCPR — Ofícios e Laudo de Lesões</title>
+<style>
+:root{--ink:#111820;--accent:#285748;--accent-dark:#183a31;--gold:#c5a253;--bg:#f4f2ec;--muted:#626b70}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif}
+nav{position:sticky;top:0;z-index:1000;background:linear-gradient(115deg,var(--ink),var(--accent-dark) 72%,#20473c);border-bottom:5px solid var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.nav{max-width:1280px;margin:auto;padding:11px 18px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#f1ede2;margin-right:4px}
+button{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);color:#fff;border-radius:9px;min-height:42px;padding:0 16px;font-size:14px;font-weight:700;cursor:pointer}button.active{background:var(--gold);border-color:#e2cf9d;color:var(--ink)}
+iframe{display:block;width:100%;height:calc(100vh - 69px);min-height:820px;border:0;background:var(--bg)}iframe[hidden]{display:none}@media(max-width:620px){.nav{padding:10px 12px}.label{width:100%}button{flex:1;min-width:130px}iframe{height:calc(100vh - 116px)}}
+</style></head><body>
+<nav><div class="nav"><span class="label">Geradores PCPR</span><button id="o" class="active">Ofícios</button><button id="l">Laudo de lesões</button></div></nav>
+<iframe id="fo" src="oficios.html" title="Gerador de Ofícios"></iframe><iframe id="fl" src="lesoes.html" title="Gerador de Laudo de Lesões" hidden></iframe>
+<script>
+const o=document.getElementById('o'),l=document.getElementById('l'),fo=document.getElementById('fo'),fl=document.getElementById('fl');
+function show(x){const a=x==='o';fo.hidden=!a;fl.hidden=a;o.classList.toggle('active',a);l.classList.toggle('active',!a);history.replaceState(null,'',a?'#oficios':'#lesoes')}
+o.onclick=()=>show('o');l.onclick=()=>show('l');show(location.hash.toLowerCase()==='#lesoes'?'l':'o');
+</script></body></html>
